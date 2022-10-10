@@ -1,5 +1,5 @@
 {
-    "name": "strong-telegram-api",
+    "name": "haskel/strong-telegram-api",
     "type": "library",
     "description": "Strongly typed library to communicate Telegram API",
     "license": "MIT",
