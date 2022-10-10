@@ -1,0 +1,13 @@
+{
+    "name": "strong-telegram-api",
+    "type": "library",
+    "description": "Strongly typed library to communicate Telegram API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pavel Haskel",
+            "email": "haskel.pavel@gmail.com"
+        }
+    ],
+
+}
