@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Haskel\Telegram\Type\Update;
 
-use App\Telegram\Type\CallbackQuery;
-use App\Telegram\Type\ChatJoinRequest;
-use App\Telegram\Type\ChatMember;
-use App\Telegram\Type\ChosenInlineResult;
-use App\Telegram\Type\InlineQuery;
-use App\Telegram\Type\Message;
-use App\Telegram\Type\MyChatMember;
-use App\Telegram\Type\Poll;
-use App\Telegram\Type\PollAnswer;
-use App\Telegram\Type\PreCheckoutQuery;
-use App\Telegram\Type\ShippingQuery;
+use Haskel\Telegram\Type\CallbackQuery;
+use Haskel\Telegram\Type\ChatJoinRequest;
+use Haskel\Telegram\Type\ChatMember;
+use Haskel\Telegram\Type\InlineQuery;
+use Haskel\Telegram\Type\InlineQueryResult\ChosenInlineResult;
+use Haskel\Telegram\Type\Message;
+use Haskel\Telegram\Type\MyChatMember;
+use Haskel\Telegram\Type\Poll;
+use Haskel\Telegram\Type\PollAnswer;
+use Haskel\Telegram\Type\PreCheckoutQuery;
+use Haskel\Telegram\Type\ShippingQuery;
 
 /**
  * @property-read int $updateId,

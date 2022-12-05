@@ -29,4 +29,17 @@ class CallbackGame
             $callbackGame['inline_message_id'] ?? null,
         );
     }
+
+    public function toArray()
+    {
+        return [
+            'user_id' => $this->userId,
+            'score' => $this->score,
+            'force' => $this->force,
+            'disable_edit_message' => $this->disableEditMessage,
+            'chat_id' => $this->chatId,
+            'message_id' => $this->messageId,
+            'inline_message_id' => $this->inlineMessageId,
+        ];
+    }
 }

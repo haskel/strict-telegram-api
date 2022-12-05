@@ -24,7 +24,7 @@ class TelegramRequestCaller
 
     public function call(string $method, array $requestParams = []): array
     {
-        $requestParams = array_filter($requestParams);
+        $requestParams = $this->arrayFilterRecursive($requestParams);
 
         $url = sprintf('%s%s/%s', $this->baseUri, $this->token, $method);
 
@@ -48,5 +48,18 @@ class TelegramRequestCaller
         }
 
         return [];
+    }
+
+    protected function arrayFilterRecursive($input): array
+    {
+        foreach ($input as &$value)
+        {
+            if (is_array($value))
+            {
+                $value = $this->arrayFilterRecursive($value);
+            }
+        }
+
+        return array_filter($input, fn($value) => $value !== null);
     }
 }

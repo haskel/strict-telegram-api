@@ -6,5 +6,4 @@ namespace Haskel\Telegram\Type;
 
 interface InlineQueryResult
 {
-
 }

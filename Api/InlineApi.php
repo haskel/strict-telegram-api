@@ -9,6 +9,11 @@ use Haskel\Telegram\Type\SentWebAppMessage;
 
 class InlineApi
 {
+    public function __construct(
+        private TelegramRequestCaller $caller,
+    ) {
+    }
+
     public function answerInlineQuery(
         string $inlineQueryId,
         array $results,
@@ -19,7 +24,29 @@ class InlineApi
         ?string $switchPmParameter = null
     ): array
     {
-        return [];
+        $requestResults = [];
+        foreach ($results as $result) {
+            if (!$result instanceof InlineQueryResult) {
+                throw new \InvalidArgumentException('Result must be instance of InlineQueryResult');
+            }
+
+            $requestResults[] = $result->toArray();
+        }
+
+        $response =  $this->caller->call(
+            'answerInlineQuery',
+            [
+                'inline_query_id' => $inlineQueryId,
+                'results' => $requestResults,
+                'cache_time' => $cacheTime,
+                'is_personal' => $isPersonal,
+                'next_offset' => $nextOffset,
+                'switch_pm_text' => $switchPmText,
+                'switch_pm_parameter' => $switchPmParameter,
+            ]
+        );
+
+        return $response;
     }
 
     public function answerWebAppQuery(

@@ -4,13 +4,25 @@ declare(strict_types=1);
 
 namespace Haskel\Telegram\Type;
 
-class InlineKeyboardMarkup
+class InlineKeyboardMarkup implements KeyboardMarkup
 {
     public function __construct(
         /** @var $inlineKeyboard InlineKeyboardButton[] */
         public array $inlineKeyboard,
     ) {
     }
+
+    public function toArray(): array
+    {
+        return [
+            'inline_keyboard' => array_map(function (array $inlineKeyboardButton) {
+                return array_map(function (InlineKeyboardButton $inlineKeyboardButton) {
+                    return $inlineKeyboardButton->toArray();
+                }, $inlineKeyboardButton);
+            }, $this->inlineKeyboard),
+        ];
+    }
+
     public static function buildFromArray(mixed $reply_markup)
     {
         $inlineKeyboard = [];

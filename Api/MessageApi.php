@@ -25,7 +25,7 @@ class MessageApi
     }
 
     public function sendMessage(
-        string $chatId,
+        int|string $chatId,
         string $text,
         ParseMode $parseMode = ParseMode::MarkdownV2,
         ?array $entities = [],
@@ -51,7 +51,7 @@ class MessageApi
             'protect_content' => $protectContent,
             'reply_to_message_id' => $replyToMessageId,
             'allow_sending_without_reply' => $allowSendingWithoutReply,
-            'reply_markup' => $replyMarkup,
+            'reply_markup' => $replyMarkup?->toArray(),
         ];
 
         $encoding = mb_internal_encoding();
@@ -75,7 +75,7 @@ class MessageApi
     ): array {
         return $this->caller->call(
             'forwardMessage',
-                [
+            [
                 'chat_id' => $chatId,
                 'from_chat_id' => $fromChatId,
                 'message_id' => $messageId,

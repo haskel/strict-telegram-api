@@ -24,4 +24,14 @@ class LoginUrl
         );
     }
 
+    public function toArray()
+    {
+        return [
+            'url' => $this->url,
+            'forward_text' => $this->forwardText,
+            'bot_username' => $this->botUsername,
+            'request_write_access' => $this->requestWriteAccess,
+        ];
+    }
+
 }

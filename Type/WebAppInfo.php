@@ -17,4 +17,11 @@ class WebAppInfo
             $webAppInfo['url'],
         );
     }
+
+    public function toArray()
+    {
+        return [
+            'url' => $this->url,
+        ];
+    }
 }
